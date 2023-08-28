@@ -104,7 +104,7 @@
     <select id="pageSelector">
       <optgroup label="【大樹自製網頁】">
         <option value="https://machi1007.github.io/expedition_headquarters/">探險總部</option>
-        <option value="https://machi1007.github.io/TreeWebIRS/">TreeWebIRS</option>
+        <option value="https://machi1007.github.io/TreeWebTFS/">TreeWebTFS</option>
         <option value="https://machi1007.github.io/TreeSimpleBoard/">大樹簡易白板</option>
         <option value="https://machi1007.github.io/treeCHATROOM/">探險總部聊天室</option>
         <option value="https://simple-online-chatroom.glitch.me/">大樹簡易聊天室</option>
@@ -127,6 +127,8 @@
     </select>
     <button id="goButton">跳轉網頁</button>
     <p>如需使用新分頁開啟，請點擊<a href="https://machi1007.github.io/TreeWebJump/" target="_blank"><b>這裡</b></a>。</p>
+    <button id="showSelectionButton">顯示選擇網頁的網址</button>
+    <div id="selectedValueDisplay"></div>
   </div>
 
   <script>
@@ -137,6 +139,24 @@
       } else {
         alert("請選擇一個網頁進行跳轉。");
       }
+    });
+
+    document.getElementById("goButton").addEventListener("click", function() {
+      var selectedPage = document.getElementById("pageSelector").value;
+      if (selectedPage) {
+        window.location.href = selectedPage;
+      } else {
+        alert("請選擇一個網頁進行跳轉。");
+      }
+    });
+
+    document.getElementById("showSelectionButton").addEventListener("click", function() {
+      var selectedOption = document.getElementById("pageSelector").options[document.getElementById("pageSelector").selectedIndex];
+      var selectedValue = selectedOption.value;
+      var selectedText = selectedOption.text;
+
+      var displayArea = document.getElementById("selectedValueDisplay");
+      displayArea.innerHTML = displayArea.innerHTML = "你選擇的網站：<b>" + selectedText + "</b><br>網址：<b>" + selectedValue + "</b>";
     });
   </script>
 </body>
