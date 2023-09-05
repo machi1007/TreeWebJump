@@ -143,23 +143,20 @@
       }
     });
 
-    document.getElementById("goButton").addEventListener("click", function() {
-      var selectedPage = document.getElementById("pageSelector").value;
-      if (selectedPage) {
-        window.location.href = selectedPage;
-      } else {
-        alert("請選擇一個網頁進行跳轉。");
-      }
-    });
 
-    document.getElementById("showSelectionButton").addEventListener("click", function() {
-      var selectedOption = document.getElementById("pageSelector").options[document.getElementById("pageSelector").selectedIndex];
-      var selectedValue = selectedOption.value;
-      var selectedText = selectedOption.text;
+document.getElementById("showSelectionButton").addEventListener("click", function() {
+  var selectedOption = document.getElementById("pageSelector").options[document.getElementById("pageSelector").selectedIndex];
+  var selectedValue = selectedOption.value;
+  var selectedText = selectedOption.text;
 
-      var displayArea = document.getElementById("selectedValueDisplay");
-      displayArea.innerHTML = displayArea.innerHTML = "你選擇的網站：<b>" + selectedText + "</b><br>網址：<b>" + selectedValue + "</b>";
-    });
+  var displayArea = document.getElementById("selectedValueDisplay");
+  
+  // 創建一個包含選擇的網站名稱和網址的內容
+  var content = "你選擇的網站：<b>" + selectedText + "</b><br>網址：<b><a href='" + selectedValue + "'>" + selectedValue + "</a></b>";
+  
+  // 將內容設置到顯示區域中
+  displayArea.innerHTML = content;
+});
   </script>
 </body>
 </html>
